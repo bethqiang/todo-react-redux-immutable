@@ -1,12 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import TodoList from './TodoList';
+
 /* --------------- COMPONENT --------------- */
 
 const App = props => {
-  console.log(props);
   return (
-    <p>Hello React!</p>
+    <div>
+      <section className="todoapp">
+        {/* input box to add todos here */}
+        <h1>todos</h1>
+        <TodoList todos={props.todos} />
+      </section>
+    </div>
   );
 };
 
