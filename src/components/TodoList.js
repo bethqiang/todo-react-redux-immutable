@@ -21,7 +21,9 @@ export class TodoList extends React.Component {
         <ul className="todo-list">
           {this.filterItems().map(item => (
             <TodoItem key={item.get('text')}
-              text={item.get('text')} />
+              text={item.get('text')}
+              status={item.get('status')}
+              editing={item.get('editing')} />
           ))}
         </ul>
       </section>

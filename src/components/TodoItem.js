@@ -1,18 +1,18 @@
 import React from 'react';
 
-const TodoItem = props => {
-  return (
-    <li className="todo">
-      <div className="view">
-        <input type="checkbox"
-          className="toggle" />
-        <label htmlFor="todo">
-          {props.text}
-        </label>
-        <button className="destroy"></button>
-      </div>
-    </li>
-  );
-};
-
-export default TodoItem;
+export default class TodoItem extends React.Component {
+  render() {
+    return (
+      <li className={`todo ${this.props.status === 'completed' ? 'completed' : null} ${this.props.editing ? 'editing' : null}`}>
+        <div className="view">
+          <input type="checkbox"
+            className="toggle" />
+          <label htmlFor="todo">
+            {this.props.text}
+          </label>
+          <button className="destroy"></button>
+        </div>
+      </li>
+    );
+  }
+}
