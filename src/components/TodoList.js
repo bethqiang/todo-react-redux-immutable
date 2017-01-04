@@ -3,18 +3,20 @@ import React from 'react';
 import TodoItem from './TodoItem';
 
 class TodoList extends React.Component {
-  // filterItems() {
-  //   if (this.props.todos) {
-  //     return this.props.todos.filter(item => (
-  //       item.get('status') === this.props.filter
-  //     ));
-  //   }
-  // }
+  filterItems() {
+    if (this.props.todos) {
+      return this.props.todos.filter(item => (
+        this.props.filter === 'all' || item.get('status') === this.props.filter
+      ));
+    } else {
+      return [];
+    }
+  }
   render() {
     return (
       <section className="main">
         <ul className="todo-list">
-          {this.props.todos.map(item => (
+          {this.filterItems().map(item => (
             <TodoItem key={item.get('text')}
               text={item.get('text')} />
           ))}
