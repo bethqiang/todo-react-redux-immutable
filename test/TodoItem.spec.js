@@ -18,8 +18,22 @@ describe('TodoItem', () => {
     expect(item[0].textContent).to.contain('React');
   });
 
-  it('strikes through an item if it is completed', () => {
+  it('strikes through if completed', () => {
     expect(item[0].classList.contains('completed')).to.equal(true);
+  });
+
+  it('should be checked if completed', () => {
+    const input = scryRenderedDOMComponentsWithTag(component, 'input');
+    expect(input[0].checked).to.equal(true);
+  });
+
+  it('should be unchecked if active', () => {
+    const textActive = 'React';
+    const componentActive = renderIntoDocument(
+      <TodoItem text={textActive} status={'active'} />
+    );
+    const itemActive = scryRenderedDOMComponentsWithTag(componentActive, 'input');
+    expect(itemActive[0].checked).to.equal(false);
   });
 
   it('should look different when editing', () => {
