@@ -13,7 +13,7 @@ const initialState = Map({
 
 /* --------------- ACTIONS --------------- */
 
-const SET_FILTER = 'SET_FILTER';
+export const SET_FILTER = 'SET_FILTER';
 export const TOGGLE_STATUS = 'TOGGLE_STATUS';
 
 /* --------------- ACTION CREATORS --------------- */

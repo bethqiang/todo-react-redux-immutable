@@ -1,9 +1,36 @@
 import { List, Map } from 'immutable';
 import { expect } from 'chai';
 
-import reducer, { TOGGLE_STATUS } from '../src/redux';
+import reducer, { SET_FILTER, TOGGLE_STATUS } from '../src/redux';
 
 describe('reducer', () => {
+
+   // change filter
+
+  const initialFilterState = Map({
+    todos: List.of(
+      Map({ id: 1, text: 'React', status: 'active', editing: false })
+    ),
+    filter: 'all'
+  });
+
+  it('changes the filter', () => {
+    const action = {
+      type: SET_FILTER,
+      filter: 'active'
+    };
+
+    const nextState = reducer(initialFilterState, action);
+
+    expect(nextState).to.equal(Map({
+      todos: List.of(
+        Map({ id: 1, text: 'React', status: 'active', editing: false })
+      ),
+      filter: 'active'
+    }));
+  });
+
+  // toggle status of item
 
   const initialState = Map({
     todos: List.of(
