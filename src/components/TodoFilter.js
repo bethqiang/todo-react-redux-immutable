@@ -1,4 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { setFilter } from '../redux';
+
+/* --------------- COMPONENT --------------- */
 
 const TodoFilter = props => {
   return (
@@ -34,4 +39,19 @@ const TodoFilter = props => {
   );
 };
 
-export default TodoFilter;
+/* --------------- CONTAINER --------------- */
+
+const mapStateToProps = state => ({
+  filter: state.get('filter')
+});
+
+const mapDispatchToProps = dispatch => ({
+  setFilter(filter) {
+    dispatch(setFilter(filter));
+  }
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoFilter);

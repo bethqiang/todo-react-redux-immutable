@@ -24,7 +24,7 @@ export const setFilter = filter => ({ type: SET_FILTER, filter });
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_FILTER:
-      return state.merge({ filter: action.filter });
+      return state.set('filter', action.filter);
 
     default:
       return state;
