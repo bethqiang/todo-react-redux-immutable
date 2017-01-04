@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import TodoItem from './TodoItem';
 
+import { toggleStatus } from '../redux';
+
 /* --------------- COMPONENT --------------- */
 
 export class TodoList extends React.Component {
@@ -21,9 +23,11 @@ export class TodoList extends React.Component {
         <ul className="todo-list">
           {this.filterItems().map(item => (
             <TodoItem key={item.get('text')}
+              id={item.get('id')}
               text={item.get('text')}
               status={item.get('status')}
-              editing={item.get('editing')} />
+              editing={item.get('editing')}
+              toggleStatus={this.props.toggleStatus} />
           ))}
         </ul>
       </section>
@@ -47,7 +51,11 @@ const mapStateToProps = state => ({
 
 // and then TodoList could be transformed into a component that just gets the filtered todos, instead of also doing the logic to filter
 
-const mapDispatchToProps = null;
+const mapDispatchToProps = dispatch => ({
+  toggleStatus(itemId) {
+    dispatch(toggleStatus(itemId));
+  }
+});
 
 export default connect(
   mapStateToProps,

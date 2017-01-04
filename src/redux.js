@@ -14,10 +14,12 @@ const initialState = Map({
 /* --------------- ACTIONS --------------- */
 
 const SET_FILTER = 'SET_FILTER';
+export const TOGGLE_STATUS = 'TOGGLE_STATUS';
 
 /* --------------- ACTION CREATORS --------------- */
 
 export const setFilter = filter => ({ type: SET_FILTER, filter });
+export const toggleStatus = itemId => ({ type: TOGGLE_STATUS, itemId });
 
 /* --------------- REDUCER --------------- */
 
@@ -25,6 +27,15 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_FILTER:
       return state.set('filter', action.filter);
+
+    case TOGGLE_STATUS:
+      const itemIndex = state.get('todos').findIndex(item => (
+        item.get('id') === action.itemId
+      ));
+      return state.updateIn(
+        ['todos', itemIndex, 'status'], status => (
+          status === 'active' ? 'completed' : 'active'
+      ));
 
     default:
       return state;
