@@ -3,7 +3,7 @@ import TestUtils from 'react-addons-test-utils';
 import TodoItem from '../src/components/TodoItem';
 import { expect } from 'chai';
 
-const { renderIntoDocument, scryRenderedDOMComponentsWithTag } = TestUtils;
+const { renderIntoDocument, scryRenderedDOMComponentsWithTag, Simulate } = TestUtils;
 
 describe('TodoItem', () => {
 
@@ -38,5 +38,23 @@ describe('TodoItem', () => {
 
   it('should look different when editing', () => {
     expect(item[0].classList.contains('editing')).to.equal(true);
+  });
+
+  it('invokes a callback when the delete button is clicked', () => {
+    let deleted = false;
+
+    // mock deleteItem function
+    const deleteItem = () => {
+      deleted = true;
+      return deleted;
+    };
+
+    const componentDelete = renderIntoDocument(
+      <TodoItem text={text} deleteItem={deleteItem} />
+    );
+    const buttons = scryRenderedDOMComponentsWithTag(componentDelete, 'button');
+    Simulate.click(buttons[0]);
+
+    expect(deleted).to.equal(true);
   });
 });

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import TodoItem from './TodoItem';
 
-import { toggleStatus } from '../redux';
+import { toggleStatus, deleteItem } from '../redux';
 
 /* --------------- COMPONENT --------------- */
 
@@ -27,7 +27,8 @@ export class TodoList extends React.Component {
               text={item.get('text')}
               status={item.get('status')}
               editing={item.get('editing')}
-              toggleStatus={this.props.toggleStatus} />
+              toggleStatus={this.props.toggleStatus}
+              deleteItem={this.props.deleteItem} />
           ))}
         </ul>
       </section>
@@ -54,6 +55,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   toggleStatus(itemId) {
     dispatch(toggleStatus(itemId));
+  },
+  deleteItem(itemId) {
+    dispatch(deleteItem(itemId));
   }
 });
 

@@ -1,7 +1,7 @@
 import { List, Map } from 'immutable';
 import { expect } from 'chai';
 
-import reducer, { SET_FILTER, TOGGLE_STATUS } from '../src/redux';
+import reducer, { SET_FILTER, TOGGLE_STATUS, DELETE_ITEM } from '../src/redux';
 
 describe('reducer', () => {
 
@@ -70,6 +70,24 @@ describe('reducer', () => {
         Map({ id: 1, text: 'React', status: 'active', editing: false }),
         Map({ id: 2, text: 'Redux', status: 'active', editing: false }),
         Map({ id: 3, text: 'Immutable', status: 'active', editing: false })
+      )
+    }));
+  });
+
+  // delete item
+
+  it('handles deleting an item', () => {
+    const action = {
+      type: DELETE_ITEM,
+      itemId: 1
+    };
+
+    const nextState = reducer(initialState, action);
+
+    expect(nextState).to.equal(Map({
+      todos: List.of(
+        Map({ id: 2, text: 'Redux', status: 'active', editing: false }),
+        Map({ id: 3, text: 'Immutable', status: 'completed', editing: false })
       )
     }));
   });
