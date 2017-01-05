@@ -1,5 +1,6 @@
 import React from 'react';
 
+import TodoHeader from './TodoHeader';
 import TodoListContainer from './TodoList';
 import TodoFilter from './TodoFilter';
 
@@ -7,9 +8,10 @@ const App = () => {
   return (
     <div>
       <section className="todoapp">
-        {/* input box to add todos here */}
-        <h1>todos</h1>
-        <TodoListContainer />
+        <TodoHeader />
+        <section className="main">
+          <TodoListContainer />
+        </section>
         <TodoFilter />
       </section>
     </div>

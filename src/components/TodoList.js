@@ -19,7 +19,9 @@ export class TodoList extends React.Component {
   }
   render() {
     return (
-      <section className="main">
+      <div>
+        <input className="toggle-all" type="checkbox" />
+        <label htmlFor="toggle-all">Mark all as complete</label>
         <ul className="todo-list">
           {this.filterItems().map(item => (
             <TodoItem key={item.get('text')}
@@ -31,7 +33,7 @@ export class TodoList extends React.Component {
               deleteItem={this.props.deleteItem} />
           ))}
         </ul>
-      </section>
+      </div>
     );
   }
 }
