@@ -2,7 +2,7 @@ import React from 'react';
 
 import TodoHeader from './TodoHeader';
 import TodoListContainer from './TodoList';
-import TodoFilter from './TodoFilter';
+import TodoTools from './TodoTools';
 
 const App = () => {
   return (
@@ -12,7 +12,7 @@ const App = () => {
         <section className="main">
           <TodoListContainer />
         </section>
-        <TodoFilter />
+        <TodoTools />
       </section>
     </div>
   );

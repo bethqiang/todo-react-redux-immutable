@@ -5,7 +5,7 @@ import { setFilter } from '../redux';
 
 /* --------------- COMPONENT --------------- */
 
-const TodoFilter = props => {
+const TodoTools = props => {
   return (
     <footer className="footer">
       <span className="todo-count"><strong>0</strong> item left</span>
@@ -54,4 +54,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(TodoFilter);
+)(TodoTools);
