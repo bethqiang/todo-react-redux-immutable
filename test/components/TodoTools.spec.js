@@ -1,12 +1,12 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-import TodoTools from '../../src/components/TodoTools';
+import { TodoTools } from '../../src/components/TodoTools';
 import { expect } from 'chai';
 
 const { renderIntoDocument, scryRenderedDOMComponentsWithTag, Simulate } = TestUtils;
 
-xdescribe('TodoTools', () => {
-  it('displays the number of items left', () => {
+describe('TodoTools', () => {
+  xit('displays the number of items left', () => {
     const activeItems = 3;
     const component = renderIntoDocument(
       <TodoTools activeItems={activeItems} />
@@ -28,7 +28,7 @@ xdescribe('TodoTools', () => {
     expect(filters[2].classList.contains('selected')).to.equal(false);
   });
 
-  it('calls a callback when the user clicks on the Clear completed button', () => {
+  xit('calls a callback when the user clicks on the Clear completed button', () => {
     let cleared = false;
     const clearCompleted = () => cleared = true;
     const component = renderIntoDocument(
