@@ -15,7 +15,12 @@ const initialState = Map({
 
 export const SET_FILTER = 'SET_FILTER';
 export const TOGGLE_STATUS = 'TOGGLE_STATUS';
+export const ADD_ITEM = 'ADD_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
+export const CLEAR_COMPLETED = 'CLEAR_COMPLETED';
+export const EDIT_ITEM = 'EDIT_ITEM';
+export const CANCEL_EDITING = 'CANCEL_EDITING';
+export const DONE_EDITING = 'DONE_EDITING';
 
 /* --------------- ACTION CREATORS --------------- */
 
